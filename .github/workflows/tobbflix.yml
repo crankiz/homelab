@@ -13,7 +13,7 @@ jobs:
       - name: Clone Repository
         uses: actions/checkout@v2
 
-      - name: Deploy Stack
+      - name: Deploy Stack to portainer
         uses: carlrygart/portainer-stack-deploy@v1
         with:
           portainer-host: ${{ secrets.PORTAINER_HOST }}
