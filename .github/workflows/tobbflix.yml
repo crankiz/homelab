@@ -19,6 +19,6 @@ jobs:
           portainer-username: ${{ secrets.PORTAINER_USERNAME }}
           portainer-password: ${{ secrets.PORTAINER_PASSWORD }}
           portainer-endpoint: 2
-          name: stack-name # Change to stack name
-          file: path/to/stackfile.yml.mustache # change path
-          variables: '{"image": "hello-world"}' # Change vars to secrets 
+          name: tobbflix
+          file: tobbflix/docker-compose.yml
+          variables: '{"plex_claim": "${{ secrets.TOBBFLIX_PLEX_CLAIM }}", "transmission_user": "${{ secrets.TOBBFLIX_TRANSMISSION_USER }}", "transmission_password": "${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}"}' # Change vars to secrets 
