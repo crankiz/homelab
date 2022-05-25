@@ -1,0 +1,100 @@
+---
+version: "3"
+services:
+# Plex media server 
+  plex:
+    image: ghcr.io/linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - ADVERTISE_IP=http://10.0.0.100:32400/
+      - CHANGE_CONFIG_DIR_OWNERSHIP=true
+      - HOME=/config
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - TERM=xterm
+      - TZ=Europe/Stockholm
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+    volumes:
+      - /opt/plex/database:/config
+      - /opt/plex/transcode:/transcode
+      - /media/usb:/plex
+    ports:
+      - 32400:32400
+      - 1900:1900/udp
+      - 3005:3005
+      - 5353:5353/udp
+      - 8324:8324
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+      - 32469:32469
+    restart: unless-stopped
+# Transmission server    
+  transmission:
+    image: ghcr.io/linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+    volumes:
+      - /opt/transmission/data:/config
+      - /media/usb/downloads:/downloads
+      - /opt/transmission/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
+# Sonarr show watcher
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+    volumes:
+      - /opt/sonarr/data:/config
+      - /media/usb/TV-shows:/tv-shows #optional
+      - /media/usb/Anime:/anime #optional
+      - /media/usb/downloads:/downloads #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+# Radarr movie watcher
+  radarr:
+    image: ghcr.io/linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+    volumes:
+      - /opt/radarr/data:/config
+      - /media/usb/Movies:/movies #optional
+      - /media/usb/downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+# Jacket indexer
+  jackett:
+    image: ghcr.io/linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+      - AUTO_UPDATE=true #optional
+    volumes:
+      - /opt/jackett/config:/config
+      - /media/usb/downloads:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
