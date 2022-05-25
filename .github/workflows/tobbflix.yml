@@ -10,7 +10,6 @@ jobs:
     timeout-minutes: 20
     
     steps:
-      - name: Clone Repository
       - uses: actions/checkout@v2
 
       - name: Deploy Stack
