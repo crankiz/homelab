@@ -1,0 +1,24 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Clone Repository
+      - uses: actions/checkout@v2
+    
+      - name: Deploy Stack
+      - uses: kgierke/portainer-stack-deployment@v1
+        with:
+          portainer-url: "https://portainer.example.com" # Change to secret
+          portainer-username: "admin" # Change to secret
+          portainer-password: "password" # Change to secret
+          portainer-endpoint: 2
+          name: stack-name # Change to stack name
+          file: path/to/stackfile.yml.mustache # change path
+          variables: '{"image": "hello-world"}' # Change vars to secrets 
