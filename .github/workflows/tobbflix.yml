@@ -8,6 +8,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    
     steps:
       - name: Clone Repository
       - uses: actions/checkout@v2
@@ -18,6 +19,6 @@ jobs:
           portainer-host: ${{ secrets.PORTAINER_HOST }}
           username: ${{ secrets.PORTAINER_USERNAME }}
           password: ${{ secrets.PORTAINER_PASSWORD }}
-          stack-name: tobbflix
-          stack-definition: tobbflix/docker-compose.yml
+          stack-name: 'tobbflix'
+          stack-definition: 'tobbflix/docker-compose.yml'
           template-variables: '{"plex_claim": "${{ secrets.TOBBFLIX_PLEX_CLAIM }}", "transmission_user": "${{ secrets.TOBBFLIX_TRANSMISSION_USER }}", "transmission_password": "${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}"}'
