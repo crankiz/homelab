@@ -15,9 +15,9 @@ jobs:
       - name: Deploy Stack
       - uses: kgierke/portainer-stack-deployment@v1
         with:
-          portainer-url: "https://portainer.example.com" # Change to secret
-          portainer-username: "admin" # Change to secret
-          portainer-password: "password" # Change to secret
+          portainer-url: ${{ secrets.PORTAINER_HOST }}
+          portainer-username: ${{ secrets.PORTAINER_USERNAME }}
+          portainer-password: ${{ secrets.PORTAINER_PASSWORD }}
           portainer-endpoint: 2
           name: stack-name # Change to stack name
           file: path/to/stackfile.yml.mustache # change path
