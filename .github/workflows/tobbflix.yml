@@ -11,14 +11,13 @@ jobs:
     steps:
       - name: Clone Repository
       - uses: actions/checkout@v2
-    
+
       - name: Deploy Stack
-      - uses: kgierke/portainer-stack-deployment@v1
+      - uses: carlrygart/portainer-stack-deploy@v1
         with:
-          portainer-url: ${{ secrets.PORTAINER_HOST }}
-          portainer-username: ${{ secrets.PORTAINER_USERNAME }}
-          portainer-password: ${{ secrets.PORTAINER_PASSWORD }}
-          portainer-endpoint: 2
-          name: tobbflix
-          file: tobbflix/docker-compose.yml
-          variables: '{"plex_claim": "${{ secrets.TOBBFLIX_PLEX_CLAIM }}", "transmission_user": "${{ secrets.TOBBFLIX_TRANSMISSION_USER }}", "transmission_password": "${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}"}' # Change vars to secrets 
+          portainer-host: ${{ secrets.PORTAINER_HOST }}
+          username: ${{ secrets.PORTAINER_USERNAME }}
+          password: ${{ secrets.PORTAINER_PASSWORD }}
+          stack-name: tobbflix
+          stack-definition: tobbflix/docker-compose.yml
+          template-variables: '{"plex_claim": "${{ secrets.TOBBFLIX_PLEX_CLAIM }}", "transmission_user": "${{ secrets.TOBBFLIX_TRANSMISSION_USER }}", "transmission_password": "${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}"}'
