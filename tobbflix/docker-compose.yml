@@ -13,7 +13,7 @@ services:
       - LANG=C.UTF-8
       - LC_ALL=C.UTF-8
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      - PLEX_CLAIM="plex_claim:${plex_claim}"
+      - PLEX_CLAIM="${PLEX_CLAIM}"
       - TERM=xterm
       - TZ=Europe/Stockholm
       - PUID=1000
@@ -44,8 +44,8 @@ services:
       - PGID=1000
       - TZ=Europe/Stockholm
       - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
-      - USER="transmission_user:${transmission_user}"
-      - PASS="transmission_password:${transmission_password}"
+      - USER=${TRANSMISSION_USER}"
+      - PASS="${TRANSMISSION_PASSWORD}"
     volumes:
       - /opt/transmission/data:/config
       - /media/usb/downloads:/downloads

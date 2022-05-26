@@ -21,4 +21,8 @@ jobs:
           password: ${{ secrets.PORTAINER_PASSWORD }}
           stack-name: 'tobbflix'
           stack-definition: 'tobbflix/docker-compose.yml'
-          template-variables: '{"plex_claim": "${{ secrets.TOBBFLIX_PLEX_CLAIM }}", "transmission_user": "${{ secrets.TOBBFLIX_TRANSMISSION_USER }}", "transmission_password": "${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}"}'
+          template-variables: ''
+        env:
+          PLEX_CLAIM: ${{ secrets.TOBBFLIX_PLEX_CLAIM }}
+          TRANSMISSION_USER: ${{ secrets.TOBBFLIX_TRANSMISSION_USER }}
+          TRANSMISSION_PASSWORD: ${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}
