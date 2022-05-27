@@ -1,10 +1,10 @@
 # homelab
 
 ## TODO
-- [ ] tobbflix deployment from GitHub
-- [ ] docker host deploy to proxmox via terraform
-  - [ ] install portainer
-- [ ] nginx proxy deployment from github
-  - [ ] Switch to treafik?
-- [ ] Loopia terraform
-- [ ] GitHub self hosted runner
+- [x] Create GitHub action deployment pipline for tobbflix.
+  - [x] Store secrets from tobbflix in GitHub
+- [ ] Create a self hosted GitHub runner running on proxmox
+- [ ] Migrate docker host from VM to LXC
+- [ ] Create docker LXC via terraform 
+  - [ ] Install portainer
+- [ ] Create GitHub action deployment pipline for nginx proxy manager or treafik.
