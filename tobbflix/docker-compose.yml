@@ -44,7 +44,7 @@ services:
       - PGID=1000
       - TZ=Europe/Stockholm
       - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
-      - USER=${TRANSMISSION_USER}"
+      - USER="${TRANSMISSION_USER}"
       - PASS="${TRANSMISSION_PASSWORD}"
     volumes:
       - /opt/transmission/data:/config
