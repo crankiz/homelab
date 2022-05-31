@@ -2,7 +2,7 @@ name: Deploy
 on:
   push:
     branches:
-      - buxfix
+      - bugfix
 jobs:
   deploy:
     name: Deploy
@@ -22,7 +22,14 @@ jobs:
           stack-name: 'tobbflix'
           stack-definition: 'tobbflix/docker-compose.yml'
           template-variables: '{"PLEX_CLAIM": "${{ secrets.TOBBFLIX_PLEX_CLAIM }}"}'
+<<<<<<< HEAD
           # env:
           #   PLEX_CLAIM: ${{ secrets.TOBBFLIX_PLEX_CLAIM }}
           #   TRANSMISSION_USER: ${{ secrets.TOBBFLIX_TRANSMISSION_USER }}
           #   TRANSMISSION_PASSWORD: ${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}
+=======
+        env:
+          PLEX_CLAIM: ${{ secrets.TOBBFLIX_PLEX_CLAIM }}
+          TRANSMISSION_USER: ${{ secrets.TOBBFLIX_TRANSMISSION_USER }}
+          TRANSMISSION_PASSWORD: ${{ secrets.TOBBFLIX_TRANSMISSION_PASSWORD }}
+>>>>>>> e53fbec9990cd319dbcc0af60f6e1071dd009834
