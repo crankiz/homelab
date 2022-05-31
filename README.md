@@ -2,7 +2,7 @@
 
 ## TODO
 - [x] Create GitHub action deployment pipline for tobbflix.
-  - [x] Store secrets from tobbflix in GitHub
+  - [x] Move secrets for tobbflix in GitHub action secrets
 - [ ] Create a self hosted GitHub runner running on proxmox
 - [ ] Migrate docker host from VM to LXC
 - [ ] Create docker LXC via terraform 
