@@ -22,7 +22,7 @@ services:
     volumes:
       - /opt/plex/database:/config
       - /opt/plex/transcode:/transcode
-      - /media/usb:/plex
+      - /mnt/plex:/plex
     ports:
       - 32400:32400
       - 1900:1900/udp
@@ -48,7 +48,7 @@ services:
       - PASS={{ TRANSMISSION_PASSWORD }}
     volumes:
       - /opt/transmission/data:/config
-      - /media/usb/downloads:/downloads
+      - /mnt/download:/downloads
       - /opt/transmission/watch:/watch
     ports:
       - 9091:9091
@@ -65,9 +65,9 @@ services:
       - TZ=Europe/Stockholm
     volumes:
       - /opt/sonarr/data:/config
-      - /media/usb/TV-shows:/tv-shows #optional
-      - /media/usb/Anime:/anime #optional
-      - /media/usb/downloads:/downloads #optional
+      - /mnt/plex/TV-shows:/tv-shows #optional
+      - /mnt/plex/Anime:/anime #optional
+      - /mnt/downloads:/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -81,8 +81,8 @@ services:
       - TZ=Europe/Stockholm
     volumes:
       - /opt/radarr/data:/config
-      - /media/usb/Movies:/movies #optional
-      - /media/usb/downloads:/downloads #optional
+      - /mnt/plex/Movies:/movies #optional
+      - /media/download:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -97,7 +97,7 @@ services:
       - AUTO_UPDATE=true #optional
     volumes:
       - /opt/jackett/config:/config
-      - /media/usb/downloads:/downloads
+      - /mnt/download:/downloads
     ports:
       - 9117:9117
     restart: unless-stopped
