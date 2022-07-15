@@ -67,7 +67,7 @@ services:
       - /opt/sonarr/data:/config
       - /mnt/plex/TV-shows:/tv-shows #optional
       - /mnt/plex/Anime:/anime #optional
-      - /mnt/downloads:/downloads #optional
+      - /mnt/download:/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -82,7 +82,7 @@ services:
     volumes:
       - /opt/radarr/data:/config
       - /mnt/plex/Movies:/movies #optional
-      - /media/download:/downloads #optional
+      - /mnt/download:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
