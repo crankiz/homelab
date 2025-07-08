@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  caddy:
+    image: caddy-loopia
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+      - /mnt/nas/docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /mnt/nas/docker/caddy/data:/data
+      - /mnt/nas/docker/caddy/config:/config
+    environment:
+    - LOOPIA_USERNAME 
+    - LOOPIA_PASSWORD

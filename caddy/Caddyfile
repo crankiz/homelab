@@ -1,0 +1,36 @@
+{
+  email tobias@svedberg.io
+  acme_dns loopia
+}
+
+unifi.svedberg.local {
+    reverse_proxy 10.0.4.1
+}
+
+nas.svedberg.local {
+    reverse_proxy 10.0.4.200
+}
+
+proxmox.svedberg.local {
+    reverse_proxy 10.0.4.10:8006
+}
+
+jellyfin.svedberg.io {
+    reverse_proxy host.docker.internal:8096  # or use container name
+}
+
+jellyseer.svedberg.io {
+    reverse_proxy host.docker.internal:5055  # or use container name
+}
+
+sonarr.svedberg.local {
+    reverse_proxy host.docker.internal:8989  # or use container name
+}
+
+radarr.svedberg.local {
+    reverse_proxy host.docker.internal:7878  # or use container name
+}
+
+prowlarr.svedberg.local {
+    reverse_proxy host.docker.internal:8989  # or use container name
+}

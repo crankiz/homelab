@@ -1,0 +1,82 @@
+version: "3.8"
+
+services:
+  jellyfin:
+    container_name: jellyfin
+    image: ghcr.io/hotio/jellyfin
+    ports:
+      - 8096:8096
+    environment:
+      - PUID
+      - PGID
+      - UMASK
+      - TZ
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.svedberg.io
+    volumes:
+      - /mnt/nas/library:/data
+      - /mnt/nas/docker/jellyfin/config:/config
+      - /mnt/nas/docker/jellyfin_cache:/cache # Vet i faan fixa detta
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "sh", "-c", "ls /data > /dev/null || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  jellyseerr:
+    container_name: jellyseerr
+    image: ghcr.io/hotio/jellyseerr
+    ports:
+      - 5055:5055
+    environment:
+      - PUID
+      - PGID
+      - UMASK
+      - TZ
+    volumes:
+      - /mnt/nas/docker/jellyseerr/config:/config
+    restart: unless-stopped
+
+  prowlarr:
+    container_name: prowlarr
+    image: ghcr.io/hotio/prowlarr
+    ports:
+      - 9696:9696
+    environment:
+      - PUID
+      - PGID
+      - UMASK
+      - TZ
+    volumes:
+      - /mnt/nas/docker/prowlarr/config:/config
+    restart: unless-stopped
+
+  radarr:
+    container_name: radarr
+    image: ghcr.io/hotio/radarr
+    ports:
+      - 7878:7878
+    environment:
+      - PUID
+      - PGID
+      - UMASK
+      - TZ
+    volumes:
+      - /mnt/nas/docker/radarr/config:/config
+      - /mnt/nas/library:/data
+    restart: unless-stopped
+
+  sonarr:
+    container_name: sonarr
+    image: ghcr.io/hotio/sonarr
+    ports:
+      - 8989:8989
+    environment:
+      - PUID
+      - PGID
+      - UMASK
+      - TZ
+    volumes:
+      - /mnt/nas/docker/sonarr/config:/config
+      - /mnt/nas/library:/data
