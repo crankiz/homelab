@@ -13,7 +13,7 @@ This document outlines the complete setup plan for building and automating a mod
 - [x] Static IPs for Proxmox, NAS, and containers
 - [x] Port forwarding from USG to Caddy (80/443)
 - [x] Reserve internal IPs for all key services
-- [ ] Document IPs and subnet in a `network.md` file
+- [x] Document IPs and subnet in a `network.md` file
 
 ### Phase 2: Deploy *arr Stack
 - [ ] Create `docker-compose.yml` for:

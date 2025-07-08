@@ -73,10 +73,27 @@ services:
     ports:
       - 8989:8989
     environment:
+    - PUID
+    - PGID
+    - UMASK
+    - TZ
+    volumes:
+    - /mnt/nas/docker/sonarr/config:/config
+    - /mnt/nas/library:/data
+    restart: unless-stopped
+  qbittorrent:
+      container_name: qbittorrent
+      image: ghcr.io/hotio/qbittorrent
+      ports:
+      - 8080:8080
+      environment:
       - PUID
       - PGID
       - UMASK
       - TZ
-    volumes:
-      - /mnt/nas/docker/sonarr/config:/config
+      - WEBUI_PORTS=8080/tcp,8080/udp
+      - LIBTORRENT=v1
+      volumes:
+      - /mnt/nas/docker/qbittorrent/config:/config
       - /mnt/nas/library:/data
+      restart: unless-stopped
