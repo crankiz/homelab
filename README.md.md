@@ -9,10 +9,10 @@ This document outlines the complete setup plan for building and automating a mod
 
 ## ✅ Phases and Task Breakdown
 ### Phase 1: Foundation & Networking
-- [ ] LXC container on Proxmox (Alpine) with Docker
-- [ ] Static IPs for Proxmox, NAS, and containers
-- [ ] Port forwarding from USG to Caddy (80/443)
-- [ ] Reserve internal IPs for all key services
+- [x] LXC container on Proxmox (Alpine) with Docker
+- [x] Static IPs for Proxmox, NAS, and containers
+- [x] Port forwarding from USG to Caddy (80/443)
+- [x] Reserve internal IPs for all key services
 - [ ] Document IPs and subnet in a `network.md` file
 
 ### Phase 2: Deploy *arr Stack
